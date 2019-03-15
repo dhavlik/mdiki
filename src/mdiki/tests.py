@@ -7,13 +7,13 @@ import tempfile
 def test_get_content_1():
 	base_path = tempfile.mkdtemp()
 	os.makedirs(base_path + '/foo/bar/')
-	copyfile('test.md', base_path + '/foo/bar/index.md')
+	copyfile('src/mdiki/test.md', base_path + '/foo/bar/index.md')
 	assert '# test' == get_content('/foo/bar', base_path)
-	copyfile('test.md', base_path + '/foo/bar/bla.md')
+	copyfile('src/mdiki/test.md', base_path + '/foo/bar/bla.md')
 	assert '# test' == get_content('/foo/bar/bla', base_path)
 	assert None == get_content('/foo', base_path)
 	os.makedirs(base_path + '/foo/bar/blubb')
-	copyfile('test.md', base_path + '/foo/bar/blubb/index.md')
+	copyfile('src/mdiki/test.md', base_path + '/foo/bar/blubb/index.md')
 	assert '# test' == get_content('/foo/bar/blubb', base_path)
 	assert None == get_content('/foo/bar/po/argh', base_path)
 
