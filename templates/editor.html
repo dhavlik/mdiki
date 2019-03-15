@@ -1,0 +1,43 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/themes/beagle.css" type="text/css" media="screen" charset="utf-8">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='mdiki.css') }}" type="text/css">
+
+	</head>
+	<body>
+		<div id="container">
+			<div class="editable">{{html_content | safe}}</div>
+			<form method="post" action="{{request.path}}/save">
+        <textarea name="content" class="markdown">{{content}}</textarea>
+<input type="submit" />
+		  </form>
+		</div>
+<script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+<script src="{{ url_for('static', filename='me-markdown.standalone.js') }}"></script>
+<script>
+var markDownEl = document.querySelector(".markdown");
+	var editor = new MediumEditor('.editable', {
+		toolbar: {
+		buttons: ['pre', 'orderedlist', 'unorderedlist', 'bold', 'italic', 'underline', 'anchor', 'h1', 'h2', 'h3', 'h4', 'quote']
+		},
+			anchorPreview: {
+        /* These are the default options for anchor preview,
+           if nothing is passed this is what it used */
+        hideDelay: 500,
+        previewValueSelector: 'a'
+    },
+            extensions: {
+                markdown: new MeMarkdown(function (md) {
+                    markDownEl.textContent = md;
+                })
+            }
+});
+
+
+
+</script>
+
+</body>
+</html>
