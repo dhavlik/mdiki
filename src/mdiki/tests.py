@@ -1,6 +1,6 @@
 import os
 from shutil import copyfile
-from main import get_content, save_content
+from mdiki.main import get_content, save_content
 import tempfile
 
 

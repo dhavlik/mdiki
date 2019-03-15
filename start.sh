@@ -1,0 +1,1 @@
+FLASK_ENV=development FLASK_APP=mdiki.main bin/flask run --lazy-loader
